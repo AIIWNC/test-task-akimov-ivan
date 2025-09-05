@@ -1,0 +1,146 @@
+:root {
+    --flag-width: 300px;
+    --flag-height: calc(var(--flag-width) * 18 / 25);
+    --flag-spacing: 20px;
+}
+
+body {
+    margin: 0;
+    padding: var(--flag-spacing);
+    background-color: #f0f0f0;
+    font-family: sans-serif;
+}
+
+.flags {
+    display: flex;
+    flex-direction: column;
+    gap: var(--flag-spacing);
+    align-items: center;
+}
+
+.flag {
+    position: relative;
+    width: var(--flag-width);
+    height: var(--flag-height);
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* Флаг Украины */
+.flag--ukraine {
+    display: flex;
+    flex-direction: column;
+}
+
+.flag--ukraine .flag__stripe {
+    height: 50%;
+}
+
+.flag--ukraine .flag__stripe--ukraine-blue {
+    background-color: #0057B8;
+}
+
+.flag--ukraine .flag__stripe--ukraine-yellow {
+    background-color: #FFDD00;
+}
+
+/* Флаг Японии */
+.flag--japan {
+    background-color: #fff;
+}
+
+.flag--japan .flag__circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(var(--flag-height) * 3 / 5);
+    height: calc(var(--flag-height) * 3 / 5);
+    background-color: #BC002D;
+    border-radius: 50%;
+}
+
+/* Флаг Исландии */
+.flag--iceland {
+    background-color: #003698;
+}
+
+/* Белый горизонтальный крест */
+.flag--iceland::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: calc(var(--flag-height) * 2 / 18);
+    background-color: #ffffff;
+    transform: translateY(-50%);
+}
+
+/* Белый вертикальный крест */
+.flag--iceland::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: calc(var(--flag-width) * 7 / 25);
+    width: calc(var(--flag-width) * 2 / 25);
+    height: 100%;
+    background-color: #ffffff;
+    transform: translateX(-50%);
+}
+
+/* Красный горизонтальный крест (накладывается поверх белого) */
+.flag--iceland .flag__cross-red-horizontal {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: calc(var(--flag-height) * 1 / 18);
+    background-color: #d72828;
+    transform: translateY(-50%);
+    z-index: 1;
+}
+
+/* Красный вертикальный крест */
+.flag--iceland .flag__cross-red-vertical {
+    position: absolute;
+    top: 0;
+    left: calc(var(--flag-width) * 7 / 25);
+    width: calc(var(--flag-width) * 1 / 25);
+    height: 100%;
+    background-color: #d72828;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+/* Флаг Чехии */
+.flag--czech {
+    display: flex;
+    flex-direction: column;
+}
+
+.flag--czech .flag__stripe {
+    height: 50%;
+}
+
+.flag--czech .flag__stripe--white {
+    background-color: #fff;
+}
+
+.flag--czech .flag__stripe--red {
+    background-color: #d7141a;
+}
+
+.flag--czech .flag__triangle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: calc(var(--flag-height) / 2)
+    0 calc(var(--flag-height) / 2)
+    calc(var(--flag-height) * 0.7);
+    border-color: transparent transparent transparent #11457e;
+}
