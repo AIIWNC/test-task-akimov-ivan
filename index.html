@@ -8,6 +8,7 @@
 </head>
 <body>
 
+    <!-- Блок флагов стран -->
     <main class="flags">
         <section class="flag flag--ukraine" aria-label="Флаг Украины">
             <div class="flag__stripe flag__stripe--ukraine-blue"></div>
@@ -30,9 +31,11 @@
         </section>
     </main>
 
+    <!-- Задача 2: Галерея изображений с возможностью удаления -->
     <section class="task-2">
-        <div id="image-info"></div>
+        <div id="image-info"></div> <!-- Информация о количестве изображений и дате -->
         <div class="image-grid">
+            <!-- Элементы галереи с кнопкой удаления -->
             <div class="image-item" data-img-src="images/1.jpg">
                 <img src="images/1.jpg" alt="Грузовик и самолёт">
                 <span class="remove-btn">&times;</span>
@@ -85,6 +88,7 @@
         <button id="restore-btn">Восстановить</button>
     </section>
 
+    <!-- Модальное окно для просмотра картинок -->
     <div class="overlay">
         <div class="modal">
             <span class="modal-close">&times;</span>
@@ -92,6 +96,7 @@
         </div>
     </div>
 
+    <!-- Задача 3: Поиск университетов -->
     <section class="task-3">
     <h2>Поиск университетов</h2>
     <div class="controls">
@@ -100,7 +105,7 @@
         <button id="reset-btn">Сброс</button>
     </div>
     <p id="selected-count">Выбрано: 0</p>
-    <div id="table-container"></div>
+    <div id="table-container"></div>    <!-- Таблица результатов поиска -->
 </section>
     
     <script src="script.js"></script>

@@ -1,4 +1,4 @@
-// Элементы DOM
+// Элементы DOM для работы с галереей и модальным окном
 const imageInfo = document.getElementById('image-info');
 const imageGrid = document.querySelector('.image-grid');
 const overlay = document.querySelector('.overlay');
@@ -7,7 +7,7 @@ const modalCloseBtn = document.querySelector('.modal-close');
 const restoreBtn = document.getElementById('restore-btn');
 
 
-// Подсчет и вывод даты
+// Обновление информации о количестве картинок и текущей дате
 function updateImageInfo() {
     const images = document.querySelectorAll('.image-item:not(.hidden)');
     const imageCount = images.length;
@@ -24,7 +24,7 @@ function updateImageInfo() {
 }
 
 
-// Запускаем функцию при загрузке страницы
+// Инициализация страницы
 document.addEventListener('DOMContentLoaded', () => {
     // Получаем удаленные картинки из localStorage
     const deletedImages = JSON.parse(localStorage.getItem('deletedImages')) || [];
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// Логика модального окна
+// Логика модального окна для просмотра картинок
 imageGrid.addEventListener('click', (event) => {
     if (event.target.tagName === 'IMG') {
         const imageSrc = event.target.src;
@@ -66,7 +66,7 @@ overlay.addEventListener('click', (event) => {
 });
 
 
-// Логика удаления картинок
+// Удаление картинки и сохранение состояния в localStorage
 imageGrid.addEventListener('click', (event) => {
     if (event.target.classList.contains('remove-btn')) {
         const imageItem = event.target.closest('.image-item');
@@ -87,7 +87,7 @@ imageGrid.addEventListener('click', (event) => {
     }
 });
 
-// Логика для кнопки "Восстановить"
+// Восстановление всех удаленных картинок
 restoreBtn.addEventListener('click', () => {
     // Очищаем localStorage
     localStorage.removeItem('deletedImages');
@@ -101,6 +101,7 @@ restoreBtn.addEventListener('click', () => {
     updateImageInfo();
 });
 
+// Задача 3 — поиск университетов
 const apiUrl = "http://universities.hipolabs.com/search?country=";
 
 const searchBtn = document.getElementById("search-btn");
@@ -109,7 +110,7 @@ const countryInput = document.getElementById("country-input");
 const tableContainer = document.getElementById("table-container");
 const selectedCount = document.getElementById("selected-count");
 
-// Загружаем сохранённое состояние из localStorage
+// Восстанавливаем сохранённое состояние таблицы и чекбоксов
 document.addEventListener("DOMContentLoaded", () => {
     const savedState = JSON.parse(localStorage.getItem("task3State"));
     if (savedState) {
@@ -121,7 +122,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-// Сохраняем состояние
+// Сохраняем состояние поиска и выбранных чекбоксов
 function saveState() {
     const checkboxes = document.querySelectorAll(".save-checkbox");
     const checked = [];
@@ -139,7 +140,7 @@ function saveState() {
     localStorage.setItem("task3State", JSON.stringify(state));
 }
 
-// Восстанавливаем чекбоксы
+// Восстанавливаем состояние чекбоксов после перезагрузки
 function restoreCheckboxState() {
     const savedState = JSON.parse(localStorage.getItem("task3State"));
     if (savedState && savedState.checkedIndexes) {
@@ -150,7 +151,7 @@ function restoreCheckboxState() {
     }
 }
 
-// Поиск университетов
+// Поиск университетов через API
 searchBtn.addEventListener("click", async () => {
     const country = countryInput.value.trim();
     if (!country) return alert("Введите страну!");
@@ -164,7 +165,7 @@ searchBtn.addEventListener("click", async () => {
             return;
         }
 
-        // Строим таблицу
+        // Формируем таблицу с результатами поиска
         let tableHTML = `<table><thead><tr>
             <th>#</th>
             <th>Название</th>
@@ -197,7 +198,7 @@ searchBtn.addEventListener("click", async () => {
     }
 });
 
-// Сброс
+// Сброс поиска и таблицы
 resetBtn.addEventListener("click", () => {
     countryInput.value = "";
     tableContainer.innerHTML = "";
@@ -205,7 +206,7 @@ resetBtn.addEventListener("click", () => {
     localStorage.removeItem("task3State");
 });
 
-// Обновляем счётчик чекбоксов
+// Обновляем счетчик выбранных университетов при изменении чекбоксов
 function updateSelectedCount() {
     const checkboxes = document.querySelectorAll(".save-checkbox");
     checkboxes.forEach(cb => {
